@@ -16,40 +16,42 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.wallet.entity.User;
-import com.wallet.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("test")
 public class UserRepositoryTest {
-	
-	private static final String EMAIL = "email@teste.com";
 
+	private static final String EMAIL = "email@teste.com";
+	
 	@Autowired
 	UserRepository repository;
 	
 	@Before
 	public void setUp() {
-		User user = new User();
-		user.setName("Teste setUp");
-		user.setPassword("654321");
-		user.setEmail(EMAIL);
+		User u = new User();
+		u.setName("Set up User");
+		u.setPassword("Senha123");
+		u.setEmail(EMAIL);
 		
-		repository.save(user);
+		repository.save(u);
 	}
 	
 	@After
 	public void tearDown() {
+		
 		repository.deleteAll();
+		
 	}
 	
 	@Test
 	public void testSave() {
-		User user = new User();
-		user.setName("Pessoa");
-		user.setPassword("123456");
-		user.setEmail("email@teste.com");
+		User u = new User();
+		u.setName("Teste");
+		u.setPassword("123456");
+		u.setEmail("teste@teste.com");
 		
-		User response = repository.save(user);
+		User response = repository.save(u);
 		
 		assertNotNull(response);
 	}

@@ -10,9 +10,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HelloWorld {
-
+	
 	@Test
 	public void testHelloWorld() {
 		assertEquals(1, 1);
 	}
+	
 }
